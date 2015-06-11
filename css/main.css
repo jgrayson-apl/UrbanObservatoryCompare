@@ -1,0 +1,743 @@
+html, body, #mainWindow {
+  height           : 100%;
+  width            : 100%;
+  margin           : 0;
+  padding          : 0;
+  overflow         : hidden;
+  font-family      : Helvetica, Tahoma, sans-serif;
+  color            : #eee;
+  background-color : #000;
+}
+
+:focus {
+  outline : none;
+}
+
+.esriRtl label {
+  /*Example of a rule that will be applied if the app is viewed in a browser with a RTL locale like Hebrew or Arabic.*/
+}
+
+.dojoxExpandoTitle {
+  display : none;
+}
+
+#topPane {
+  height : 85px;
+}
+
+#topTopPane {
+  height           : 50px;
+  background-color : #222;
+  overflow         : hidden;
+}
+
+#topLeftPane {
+  overflow : hidden;
+}
+
+.uoLogo {
+  height : 30px;
+  margin : 15px;
+}
+
+#socialMediaLinks {
+  float : right;
+}
+
+.esriRTL #socialMediaLinks {
+  float : left;
+}
+
+/*#socialMediaPane #socialMediaLinks {
+  float : right;
+}
+
+.esriRTL #socialMediaPane #socialMediaLinks {
+  float : left;
+}*/
+
+#socialMediaLinks {
+  margin  : 10px;
+  opacity : 0.5;
+}
+
+#socialMediaLinks:hover {
+  opacity : 1.0;
+}
+
+#nextSlideTheme {
+  font-style : italic;
+}
+
+#topTitlePane {
+  width         : 100%;
+  cursor        : pointer;
+  padding-right : 0;
+  padding-left  : 25px;
+  margin-right  : 0;
+  margin-left   : 5px;
+  background    : #222 url(../images/hide_pane_up.png) no-repeat 0;
+}
+
+#topTitlePane.collapsed {
+  width            : 200px !important;
+  padding-right    : 0;
+  padding-left     : 25px;
+  background-image : url(../images/hide_pane_down.png) !important;
+}
+
+.esriRTL #topTitlePane {
+  /*width: 100% !important;*/
+  cursor        : pointer;
+  padding-right : 25px;
+  padding-left  : 0;
+  margin-right  : 5px;
+  margin-left   : 0;
+  background    : #222 url(../images/hide_pane_up.png) no-repeat right;
+}
+
+.esriRTL #topTitlePane.collapsed {
+  width            : 200px !important;
+  cursor           : pointer;
+  padding-right    : 25px;
+  padding-left     : 0;
+  margin-right     : 5px;
+  margin-left      : 0;
+  background-image : url(../images/hide_pane_down.png) !important;
+}
+
+#leftTitlePane {
+  width        : 175px;
+  cursor       : pointer;
+  padding-left : 25px;
+  background   : #222 url(../images/hide_pane_up.png) no-repeat 0;
+}
+
+.esriRTL #leftTitlePane {
+  width         : 150px;
+  cursor        : pointer;
+  padding-right : 25px;
+  background    : #222 url(../images/hide_pane_up.png) no-repeat right;
+}
+
+#leftTitlePane.collapsed {
+  background-image : url(../images/hide_pane_down.png) !important;
+}
+
+.esriRTL #leftTitlePane.collapsed {
+  background-image : url(../images/hide_pane_down.png) !important;
+}
+
+.bouncing {
+  cursor : wait !important;
+}
+
+.tundra .dojoxExpandoClosed {
+  background : none repeat scroll 0 0 transparent;
+  border     : none !important;
+}
+
+#topCityListPane {
+  width  : 200px;
+  height : 50px;
+}
+
+#cityListContainer {
+  margin-right : 0;
+  margin-left  : 5px;
+}
+
+#cityListContainer.collapsed {
+  margin-right : 0;
+  margin-left  : 205px;
+}
+
+.esriRTL #cityListContainer {
+  margin-right : 5px;
+  margin-left  : 0;
+}
+
+.esriRTL #cityListContainer.collapsed {
+  margin-right : 205px;
+  margin-left  : 0;
+}
+
+#listByFirstLetter {
+  user-select  : none;
+  float        : right;
+  margin-right : 10px;
+}
+
+.esriRTL #listByFirstLetter {
+  user-select : none;
+  float       : left;
+  margin-left : 10px;
+}
+
+.firstLetter {
+  float          : left;
+  color          : #eee;
+  cursor         : pointer;
+  width          : 15px;
+  height         : 15px;
+  padding        : 2px;
+  font-size      : 0.75em;
+  font-weight    : bolder;
+  text-align     : center;
+  vertical-align : middle;
+  border-radius  : 16px;
+}
+
+.firstLetter:hover {
+  color            : red;
+  background-color : #fff;
+}
+
+.firstLetter:active {
+  color            : #fff;
+  background-color : red;
+}
+
+#leftThemeListPane {
+  width   : 200px;
+  padding : 0;
+}
+
+#themeTitle, #cityTitle {
+  font-size   : 14pt;
+  font-weight : bold;
+  padding     : 5px;
+  background  : #222;
+  width       : auto;
+}
+
+#currentThemePane {
+  height   : 30px;
+  padding  : 0;
+  margin   : 10px 10px !important;
+  overflow : hidden;
+}
+
+#currentThemeTitle {
+  font-size   : 18pt;
+  font-weight : bold;
+  overflow    : hidden;
+}
+
+.pickMapPanelLabel {
+  font-weight : bolder;
+  text-shadow : 0 0 1px gray;
+}
+
+.scrollPane {
+  cursor : pointer;
+}
+
+.scrollPane.disabled {
+  background-image : none !important;
+}
+
+#scrollLeftPane {
+  width      : 40px;
+  background : #222 url(../images/scroll_left.png) no-repeat center;
+}
+
+#scrollLeftPane:hover {
+  background-image : url(../images/scroll_left_white.png);
+}
+
+.esriRTL #scrollLeftPane {
+  background : #222 url(../images/scroll_right.png) no-repeat center;
+}
+
+.esriRTL #scrollLeftPane:hover {
+  background : #222 url(../images/scroll_right_white.png) no-repeat center;
+}
+
+#scrollRightPane {
+  width      : 40px;
+  background : #222 url(../images/scroll_right.png) no-repeat center;
+}
+
+#scrollRightPane:hover {
+  background-image : url(../images/scroll_right_white.png);
+}
+
+.esriRTL #scrollRightPane {
+  background : #222 url(../images/scroll_left.png) no-repeat center;
+}
+
+.esriRTL #scrollRightPane:hover {
+  background : #222 url(../images/scroll_left_white.png) no-repeat center;
+}
+
+#scrollUpPane {
+  height     : 40px;
+  background : #222 url(../images/scroll_up.png) no-repeat center;
+}
+
+#scrollUpPane:hover {
+  background-image : url(../images/scroll_up_white.png);
+}
+
+#scrollDownPane {
+  height     : 40px;
+  background : #222 url(../images/scroll_down.png) no-repeat center;
+}
+
+#scrollDownPane:hover {
+  background-image : url(../images/scroll_down_white.png);
+}
+
+#themeListPane {
+  padding          : 0;
+  background-color : #222;
+  overflow         : hidden;
+}
+
+#themeListPane .dijitContentPane {
+  padding : 0;
+}
+
+#themeListPane .dijitTitlePane {
+  /*border-bottom: solid 1px #222;*/
+}
+
+#themeListPane .dijitTitlePaneTitle {
+  height      : 25px; /*75px*/
+  border      : none !important;
+  background  : #222 !important;
+  font-size   : 13pt;
+  font-weight : bold;
+  padding     : 5px;
+}
+
+#themeListPane .dijitTitlePaneTitle.dijitOpen {
+  height : 20px !important;
+  color  : #eee !important;
+}
+
+#themeListPane .dijitTitlePaneTitle.dijitClosed {
+  /*color: #222 !important;*/
+}
+
+#themeListPane .dijitTitlePane .dijitClosed .dijitArrowNode {
+  background-image : url(../images/spriteArrowsWhite.png);
+}
+
+#themeListPane .dijitTitlePane .dijitOpen .dijitArrowNode {
+  background-image : url(../images/spriteArrowsWhite.png);
+}
+
+#themeListPane .dijitTitlePaneContentOuter, #themeListPane .dijitTitlePaneContentInner {
+  background-color : #222;
+  border           : none;
+}
+
+#centerMapContainer {
+  margin : 0 20px 0 20px;
+}
+
+#centerMapContainer .dijitContentPane {
+  margin : 10px;
+}
+
+.centerMapPane {
+  width    : 33.33%;
+  overflow : hidden;
+}
+
+#cityListPane {
+  background-color : #222;
+  overflow         : hidden;
+}
+
+#cityListTable, #cityList {
+  padding          : 0;
+  background-color : #222;
+}
+
+.dojoDndItem {
+  cursor : default;
+}
+
+.dojoDndItemOver, .dojoDndItemAnchor {
+  background-image : none !important;
+  background-color : transparent !important;
+}
+
+.selectable {
+  cursor : pointer !important;
+  color  : #eee !important;
+}
+
+.selectable:hover {
+  color            : #222 !important;
+  background-color : #eee !important;
+}
+
+.themeSelected, .citySelected {
+  color            : #222 !important;
+  background-color : #eee !important;
+  font-weight      : bolder;
+}
+
+.cityNode {
+  width          : 125px;
+  min-width      : 125px;
+  vertical-align : middle;
+  font-size      : 11pt;
+  text-align     : center;
+  font-weight    : bold;
+  color          : #6a6a6a;
+}
+
+.actionItem.actionItemBusy, .actionItem.actionItemBusy:hover {
+  color            : #444 !important;
+  background-color : #222 !important;
+  cursor           : not-allowed !important;
+}
+
+.cityLabel {
+  color       : red;
+  height      : 24px;
+  padding     : 2px;
+  margin      : 0 10px !important;
+  font-size   : 14pt;
+  font-weight : bolder;
+  overflow    : hidden;
+}
+
+.compareMap {
+  direction        : ltr;
+  background-color : #1f2123;
+  border           : solid thin #333;
+  min-width        : 100px;
+  min-height       : 100px;
+}
+
+.themeNotAvailable {
+  color       : #444;
+  text-shadow : 1px 1px 0 #222;
+  font-size   : 1.4em;
+  text-align  : center;
+  margin      : 30% 3%;
+}
+
+.legendNode {
+  position       : absolute;
+  z-index        : 99;
+  bottom         : 5px;
+  left           : 5px;
+  height         : 16px;
+  width          : auto;
+  color          : #999;
+  text-shadow    : 1px 1px 2px #222;
+  display        : inline-block;
+  font-size      : 13px;
+  overflow       : hidden;
+  padding-left   : 5px;
+  text-overflow  : ellipsis;
+  vertical-align : bottom;
+  white-space    : nowrap;
+  cursor         : pointer;
+}
+
+.legendNodeOpen {
+  max-width        : 65%;
+  height           : auto !important;
+  white-space      : normal;
+  padding          : 5px;
+  font-weight      : bolder;
+  color            : #eee;
+  background-color : rgba(31, 33, 35, 0.8);
+  text-shadow      : none !important;
+}
+
+.esriLegendServiceLabel {
+  display : none;
+}
+
+.esriLegendService {
+  margin-left : 5px;
+}
+
+.esriLegendLayer {
+  margin-left : 10px;
+}
+
+.compareInfo {
+  background-color : #000;
+  height           : 30%;
+  font-size        : 11pt;
+  color            : #ccc;
+  padding          : 0 5px !important;
+}
+
+.compareInfo a {
+  color : #fff;
+}
+
+body {
+  scrollbar-face-color   : #666;
+  scrollbar-shadow-color : #444;
+  scrollbar-track-color  : #222;
+  scrollbar-arrow-color  : silver;
+}
+
+::-webkit-scrollbar {
+  width  : 12px;
+  height : 12px;
+}
+
+::-webkit-scrollbar-track {
+  background : #222;
+}
+
+::-webkit-scrollbar-thumb {
+  background : #666;
+}
+
+.mapItemThemes {
+  font-size : larger;
+}
+
+.themeItem {
+  cursor        : pointer;
+  font-size     : 10pt;
+  font-weight   : bolder;
+  padding       : 2px 2px 2px 6px;
+  margin-bottom : 2px;
+  color         : #eee;
+}
+
+.cityLoading, .cityLoading:hover {
+  color        : red !important;
+  border-color : red;
+  cursor       : wait;
+}
+
+.themeSelected, .citySelected, .mapScaleSelected {
+  color            : #222 !important;
+  background-color : #eee !important;
+  font-weight      : bolder;
+}
+
+.dijitGutter {
+  background-color : transparent !important;
+}
+
+#splashDialog {
+  border-color       : #444 !important;
+  color              : red !important;
+  -webkit-box-shadow : none !important;
+}
+
+#splashDialog .dijitDialogTitleBar {
+  background     : #222 none !important;
+  border         : none !important;
+  vertical-align : middle;
+  height         : 50px;
+}
+
+#splashDialog .dijitDialogCloseIcon {
+  top              : 15px;
+  right            : 15px;
+  background-image : url(../images/tabClose.png) !important;
+}
+
+#splashDialog .dijitDialogPaneContent {
+  border-top       : none !important;
+  background-color : #222;
+}
+
+.splashContent {
+  width            : 700px;
+  height           : auto;
+  margin           : 20px;
+  font-size        : 12pt;
+  color            : #eee !important;
+  background-color : #222;
+}
+
+#splashOkBtn .dijitButtonNode {
+  background   : #333 none !important;
+  border-color : #444;
+  font-size    : larger;
+  min-width    : 150px;
+}
+
+#splashOkBtn .dijitButtonNode:hover {
+  border-color : #666;
+}
+
+#splashOkBtn .dijitButtonText {
+  color : red !important;
+}
+
+#splashOkBtn .dijitButtonContents {
+  outline : none !important;
+}
+
+.busyButtonIcon {
+  width      : 64px;
+  height     : 16px;
+  background : url(../images/uobusy.gif) no-repeat center;
+}
+
+.splashContent li {
+  margin : 10px;
+}
+
+.esriScalebarLine {
+  border-color : #999 !important;
+}
+
+.esriAttribution {
+  background : none !important;
+}
+
+.esriAttribution, .esriScalebarLabel {
+  color       : #999 !important;
+  text-shadow : 1px 1px 2px #444;
+}
+
+.esriAttributionOpen {
+  padding          : 5px;
+  font-weight      : bolder;
+  text-shadow      : none !important;
+  color            : silver !important;
+  background-color : rgba(31, 33, 35, 0.8) !important;
+}
+
+.mapPicker {
+  width  : 160px;
+  height : auto;
+}
+
+.mapOption {
+  cursor           : pointer;
+  padding          : 20px;
+  font-size        : 13pt;
+  font-weight      : bolder;
+  color            : #eee;
+  background-color : gray;
+  border           : solid 1px silver;
+  text-align       : center;
+}
+
+.mapOption:hover {
+  border-color : red !important;
+}
+
+.mapOptionHighlight {
+  border-color : red !important;
+}
+
+.esriSimpleSliderTL {
+  top  : 40px !important;
+  left : 10px !important;
+}
+
+.esriSimpleSlider {
+  color            : #eee !important;
+  background-color : #222 !important;
+  border-radius    : 0 !important;
+  border           : none !important;
+}
+
+.esriSimpleSliderVertical .esriSimpleSliderIncrementButton {
+  border-bottom : none !important;
+}
+
+.esriSimpleSliderIncrementButton, .esriSimpleSliderDecrementButton {
+  border-radius : 0;
+  background    : none !important;
+}
+
+.esriSimpleSlider div {
+  font-size   : 18px;
+  font-weight : bold;
+  width       : 22px;
+  height      : 22px;
+  line-height : 20px;
+}
+
+.esriSimpleSlider div:active {
+  color : red !important;
+}
+
+a img {
+  border : none !important;
+}
+
+.avatarLabel {
+  font-size   : larger;
+  font-weight : bolder;
+  padding     : 5px;
+}
+
+.avatarThumbnail {
+  width : 150px;
+}
+
+.dijitDialogUnderlay {
+  background-color : rgba(0, 0, 0, 0.5);
+}
+
+.esriSignInDialog {
+  border     : solid 1px #444 !important;
+  color      : #eee !important;
+  box-shadow : none !important;
+}
+
+.esriSignInDialog input {
+  padding : 3px;
+  color   : #222;
+}
+
+.esriSignInDialog .dijitDialogTitleBar {
+  border     : none !important;
+  background : #333 none !important;
+}
+
+.esriSignInDialog .dijitDialogTitle {
+  color       : #eee;
+  font-weight : bolder !important;
+}
+
+.esriSignInDialog .dijitDialogPaneContent {
+  border           : none !important;
+  background-color : #333 !important;
+}
+
+.esriSignInDialog .dijitDialogPaneContentArea {
+  padding          : 5px;
+  background-color : #333 !important;
+  border           : none !important;
+}
+
+.esriSignInDialog .dijitDialogPaneActionBar {
+  background-color : #333 !important;
+  border           : none !important;
+  text-align       : right;
+}
+
+.esriSignInDialog .dijitButtonNode {
+  background   : #222 !important;
+  border-color : #555 !important;
+}
+
+.esriSignInDialog .dijitButtonNode:hover {
+  box-shadow : 0 0 1px #eee;
+}
+
+.esriSignInDialog .dijitButtonText {
+  color : #ccc !important;
+}
+
+.esriSignInDialog .dijitButtonText:hover {
+  color : #eee !important;
+}
+
+

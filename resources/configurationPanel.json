@@ -1,0 +1,98 @@
+{
+  "configurationSettings": [
+    {
+      "category": "<span style='color:red;font-weight:bolder;font-size:larger;'>Initial Maps</span>",
+      "fields": [
+        {
+          "type": "paragraph",
+          "value": "Initial Urban Observatory theme."
+        },
+        {
+          "type": "string",
+          "fieldName": "noun",
+          "label": "<b>Noun:</b>",
+          "tooltip": "Initial Noun",
+          "placeHolder": "the initial noun..."
+        },
+        {
+          "type": "string",
+          "fieldName": "theme",
+          "label": "<b>Theme:</b>",
+          "tooltip": "Initial Theme",
+          "placeHolder": "the initial theme..."
+        },
+        {
+          "type": "paragraph",
+          "value": "List of initial city names should be separated by commas; spaces are ok but don't use quotes."
+        },
+        {
+          "type": "string",
+          "fieldName": "cities",
+          "label": "<b>Cities:</b>",
+          "tooltip": "List of initial Cities",
+          "placeHolder": "the initial list of cities..."
+        },
+        {
+          "type": "paragraph",
+          "value": "Minimum, initial, and maximum Map levels used by the application."
+        },
+        {
+          "type": "number",
+          "fieldName": "minLevel",
+          "label": "<b>Min Level:</b>",
+          "tooltip": "Minimum Level",
+          "placeHolder": "the min level...",
+          "constraints": {
+            "min": 0,
+            "max": 20,
+            "places": 0
+          }
+        },
+        {
+          "type": "number",
+          "fieldName": "level",
+          "label": "<b>Initial Level:</b>",
+          "tooltip": "Initial Level",
+          "placeHolder": "the initial level...",
+          "constraints": {
+            "min": 0,
+            "max": 20,
+            "places": 0
+          }
+        },
+        {
+          "type": "number",
+          "fieldName": "maxLevel",
+          "label": "<b>Max Level:</b>",
+          "tooltip": "Maximum Level",
+          "placeHolder": "the max level...",
+          "constraints": {
+            "min": 0,
+            "max": 20,
+            "places": 0
+          }
+        }
+      ]
+    },
+    {
+      "category": "<span style='color:red;font-weight:bolder;font-size:larger;'>Application UI</span>",
+      "fields": [
+        {
+          "type": "boolean",
+          "fieldName": "dualPane",
+          "label": "<b>DualPane</b>",
+          "tooltip": "Display two panes instead of three."
+        }
+      ]
+    }
+  ],
+  "values": {
+    "noun": "",
+    "theme": "",
+    "cities": "",
+    "minLevel": 0,
+    "level": 10,
+    "maxLevel": 20,
+    "dualPane": false
+  }
+}

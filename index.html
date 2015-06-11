@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Urban Observatory</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="//js.arcgis.com/3.13/dijit/themes/tundra/tundra.css"/>
+    <link rel="stylesheet" type="text/css" href="//js.arcgis.com/3.13/dojox/layout/resources/ExpandoPane.css"/>
+    <link rel="stylesheet" type="text/css" href="//js.arcgis.com/3.13/dojo/resources/dnd.css"/>
+    <link rel="stylesheet" type="text/css" href="//js.arcgis.com/3.13/esri/css/esri.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <script type="text/javascript">
+      var package_path = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
+      var dojoConfig = {
+        parseOnLoad: true,
+        async: true,
+        packages: [
+          {
+            name: "application",
+            location: package_path + '/js'
+          },
+          {
+            name: "config",
+            location: package_path + '/config'
+          },
+          {
+            name: "arcgis_templates",
+            location: package_path + '/..'
+          },
+          {
+            "name": "apl",
+            "location": package_path + "/apl"
+          }
+        ]
+      };
+    </script>
+    <script type="text/javascript" src="//js.arcgis.com/3.13/"></script>
+    <script type="text/javascript">
+      require([
+        "dojo/ready",
+        "dojo/_base/lang",
+        "config/templateConfig",
+        "application/template",
+        "application/main",
+        "dijit/layout/BorderContainer",
+        "dojox/layout/ExpandoPane",
+        "dijit/layout/ContentPane"
+      ], function (ready, lang, templateConfig, Template, UOCompareApp) {
+
+        var myTemplate = new Template(templateConfig);
+        myTemplate.startup().then(function (config) {
+          ready(lang.hitch(this, function (evt) {
+            var uoCompareApp = new UOCompareApp(config);
+            uoCompareApp.startup();
+          }));
+        });
+
+      });
+    </script>
+  </head>
+  <body class="tundra">
+    <div id="mainWindow" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="design:'headline',gutters:false">
+      <div id="topPane" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'top',design:'headline',gutters:false">
+        <div id="topTopPane" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'top',gutters:false">
+          <div id="topLeftPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'leading',style:{width:'35%'}">
+            <a href="http://www.urbanObservatory.org" target="_blank" title="More Information on the Urban Observatory">
+              <img id="uoLogo" class="uoLogo" src="images/uo_white_smaller.png"/>
+            </a>
+          </div>
+          <div data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'"></div>
+          <div id="socialMediaPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'trailing',style:{width:'35%'}">
+            <!-- Go to www.addthis.com/dashboard to customize your tools -->
+            <div id="socialMediaLinks" class="addthis_sharing_toolbox"></div>
+            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52014bbf0f132b74" async="async"></script>
+          </div>
+        </div>
+        <div id="leftTitlePane" class="titlePane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'leading'">
+          <div id="themeTitle"></div>
+        </div>
+        <div id="topTitlePane" class="titlePane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
+          <span id="listByFirstLetter"></span>
+          <div id="cityTitle"></div>
+        </div>
+      </div>
+      <div id="centerContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'center',design:'sidebar',gutters:false">
+        <div id="topCityListPane" data-dojo-type="dojox/layout/ExpandoPane" data-dojo-props="region:'top',gutters:false">
+          <div id="cityListContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'center',gutters:false">
+            <div id="scrollLeftPane" class="scrollPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'leading',scrollDir:'left'"></div>
+            <div id="cityListPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
+              <table id="cityListTable" height="100%" border="0" style="overflow:hidden;">
+                <tr id="cityList" height="100%"></tr>
+              </table>
+            </div>
+            <div id="scrollRightPane" class="scrollPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'trailing',scrollDir:'right'"></div>
+          </div>
+        </div>
+        <div id="leftThemeListPane" data-dojo-type="dojox/layout/ExpandoPane" data-dojo-props="region:'leading',gutters:false">
+          <div id="themeListContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'center',gutters:false">
+            <div id="scrollUpPane" class="scrollPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top',scrollDir:'up'"></div>
+            <div id="themeListPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center'">
+              <div id="WorkPane" class="themePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'',open:true"></div>
+              <div id="MovementPane" class="themePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'',open:true"></div>
+              <div id="PeoplePane" class="themePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'',open:true"></div>
+              <div id="PublicPane" class="themePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'',open:true"></div>
+              <div id="SystemsPane" class="themePane" data-dojo-type="dijit/TitlePane" data-dojo-props="title:'',open:true"></div>
+            </div>
+            <div id="scrollDownPane" class="scrollPane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom',scrollDir:'down'"></div>
+          </div>
+        </div>
+        <div id="centerMapContainer" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'center',gutters:false">
+          <div id="currentThemePane" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top',gutters:false">
+            <div id="currentThemeTitle"></div>
+          </div>
+          <div id="contentPane1" class="centerMapPane" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'leading',gutters:false">
+            <div id="city1" class="cityLabel" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'"></div>
+            <div id="map1" dir="ltr" class="compareMap" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center',targetMap:1"></div>
+            <div id="info1" class="compareInfo" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom'"></div>
+          </div>
+          <div id="contentPane2" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'center',gutters:false">
+            <div id="city2" class="cityLabel" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'"></div>
+            <div id="map2" dir="ltr" class="compareMap" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center',targetMap:2"></div>
+            <div id="info2" class="compareInfo" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom'"></div>
+          </div>
+          <div id="contentPane3" class="centerMapPane" data-dojo-type="dijit/layout/BorderContainer" data-dojo-props="region:'trailing',gutters:false">
+            <div id="city3" class="cityLabel" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'top'"></div>
+            <div id="map3" dir="ltr" class="compareMap" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'center',targetMap:3"></div>
+            <div id="info3" class="compareInfo" data-dojo-type="dijit/layout/ContentPane" data-dojo-props="region:'bottom'"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
