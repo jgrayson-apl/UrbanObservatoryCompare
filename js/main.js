@@ -94,13 +94,11 @@ define([
       // IS APPLICATION BEING DISPLAYED WITH A RIGHT-TO-LEFT LOCALE //
       this.isRTL = (this.config.i18n.direction === "rtl");
 
-      // CITY NAMES COMES IN AS STRING WITH COMMAS SO  //
-      // WE NEED TO SPLIT THEM UP INTO ARRAY OF STRING //
-      this.config.cities = config.cities.split(",");
       // MAKE SURE LEVELS ARE TREATED AS NUMBERS //
       this.config.minLevel = parseInt(config.minLevel, 10);
       this.config.level = parseInt(config.level, 10);
       this.config.maxLevel = parseInt(config.maxLevel, 10);
+      //console.info("CONFIG: ", this.config);
 
       // INIT CURRENT SELECTION //
       this.currentSelection.cities[0] = null;
@@ -117,12 +115,11 @@ define([
       this.busyStatus = new UOBusyStatus();
       this.busyStatus.on('status-change', lang.hitch(this, this.busyStatusUpdate));
 
-      // INITIALIZE ADDTHIS AND SET TITLE AND URL //
-      addthis.init();
-      addthis.ost = 0;
-      addthis.update('share', 'title', this.config.i18n.mainPage.socialMediaMessage);
-      addthis.update('share', 'url', window.location.href);
-      addthis.ready();
+      // SET ADDTHIS TITLE AND URL //
+      addthis_share = {
+        title: this.config.i18n.mainPage.socialMediaMessage,
+        url: window.location.href
+      };
 
       // PROVIDE INSTANCE CONTEXT TO THESE METHODS //
       this.displaySplashDialog = lang.hitch(this, this.displaySplashDialog);
@@ -219,7 +216,7 @@ define([
         this.uoCatalog.insertNodes(false, cityInfos);
 
         // TOGGLE UI //
-        //this.toggleOptions();
+        this.toggleOptions();
 
         // PREVENT CLICK ACTION ON FIRST LETTER NODE //
         on(dom.byId("listByFirstLetter"), "click", lang.hitch(this, function (evt) {
@@ -377,6 +374,8 @@ define([
                   this.busyStatus.setLessBusy();
                 }));
               }), (750 * cityIndex));
+            } else {
+              console.info("City doesn't have theme or city node not present: ", cityName, this.config.theme);
             }
           }));
         }), 750);
@@ -972,22 +971,25 @@ define([
 
               this.displayLegend(dom.byId(legendNodeId), false);
 
-              // UPDATE MAP AND THEN DISPLAY IT ONCE IT'S FINISHED UPDATING //
-              var mapUpdateDeferred = (previousExtent != null) ? map.setExtent(previousExtent, false) : map.setLevel(this.currentSelection.level);
-              mapUpdateDeferred.then(lang.hitch(this, function () {
-                on.once(map, 'update-end', lang.hitch(this, function () {
-                  fx.fadeIn({
-                    node: mapSubNode,
-                    duration: 2500,
-                    easing: this.uoEasing,
-                    onEnd: lang.hitch(this, function () {
-                      domClass.remove(cityNode, 'cityLoading');
-                      domClass.remove(mapNodeId, 'cityLoading');
-                      deferred.resolve();
-                    })
-                  }).play();
-                }));
+              // DISPLAY MAP ONCE IT'S FINISHED UPDATING //
+              on.once(map, 'update-end', lang.hitch(this, function () {
+                fx.fadeIn({
+                  node: mapSubNode,
+                  duration: 2500,
+                  easing: this.uoEasing,
+                  onEnd: lang.hitch(this, function () {
+                    domClass.remove(cityNode, 'cityLoading');
+                    domClass.remove(mapNodeId, 'cityLoading');
+                    deferred.resolve();
+                  })
+                }).play();
               }));
+              // UPDATE MAP BASED ON PREVIOUS EXTENT OF CURRENT ZOOM LEVEL //
+              if(previousExtent != null) {
+                map.setExtent(previousExtent, false)
+              } else {
+                map.setLevel(this.currentSelection.level);
+              }
 
               // CONNECT MAP SCALE CHANGE EVENTS //
               if(map.navigationManager.eventModel === 'touch') {
@@ -1368,7 +1370,7 @@ define([
           group: this.config.group,
           noun: this.currentSelection.noun,
           theme: this.currentSelection.theme,
-          cities: cityNames.join(','),
+          cities: cityNames,
           minLevel: this.config.minLevel,
           level: this.currentSelection.level,
           maxLevel: this.config.maxLevel,
@@ -1377,10 +1379,13 @@ define([
 
         // UPDATE BROWSER URL //
         window.history.replaceState(null, null, "?" + encodeURIComponent(ioQuery.objectToQuery(newUrlParameters)));
+
         // UPDATE ADDTHIS SHARE URL //
-        addthis.ost = 0;
-        addthis.update('share', 'url', window.location.href);
-        addthis.ready();
+        addthis_share = {
+          title: this.config.i18n.mainPage.socialMediaMessage,
+          url: window.location.href
+        };
+
       }
     }
 

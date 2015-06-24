@@ -18,7 +18,7 @@
 define({
   "noun": "People",
   "theme": "Population Density",
-  "cities": "New York,London,Tokyo",
+  "cities": ["New York", "London", "Tokyo"],
   "minLevel": 8,
   "level": 10,
   "maxLevel": 16,

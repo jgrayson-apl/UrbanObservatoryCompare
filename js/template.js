@@ -23,10 +23,10 @@
 define([
   "dojo/Evented", "dojo/_base/declare", "dojo/_base/kernel", "dojo/_base/array", "dojo/_base/lang", "dojo/dom-class",
   "dojo/Deferred", "dojo/promise/all", "esri/arcgis/utils", "esri/urlUtils", "esri/request", "esri/config", "esri/lang",
-  "esri/IdentityManager", "esri/arcgis/Portal", "esri/arcgis/OAuthInfo", "esri/tasks/GeometryService", "config/defaults", "dojo/string"
+  "esri/IdentityManager", "esri/arcgis/Portal", "esri/arcgis/OAuthInfo", "esri/tasks/GeometryService", "config/defaults", "dojo/string", "dojo/io-query"
 ], function (Evented, declare, kernel, array, lang, domClass,
              Deferred, all, arcgisUtils, urlUtils, esriRequest, esriConfig, esriLang,
-             IdentityManager, esriPortal, ArcGISOAuthInfo, GeometryService, defaults, string) {
+             IdentityManager, esriPortal, ArcGISOAuthInfo, GeometryService, defaults, string, ioQuery) {
 
   return declare([Evented], {
 
@@ -170,24 +170,35 @@ define([
         for (var i = 0; i < items.length; i++) {
           var item = urlObject.query[items[i]];
           if(item) {
-            switch (item.toLowerCase()) {
-              case "true":
-                obj[items[i]] = true;
-                break;
-              case "false":
-                obj[items[i]] = false;
-                break;
-              default:
-                obj[items[i]] = item;
+            if(typeof item == "string") {
+              switch (item.toLowerCase()) {
+                case "true":
+                  obj[items[i]] = true;
+                  break;
+                case "false":
+                  obj[items[i]] = false;
+                  break;
+                default:
+                  obj[items[i]] = item;
+              }
+            } else {
+              obj[items[i]] = item;
             }
           }
         }
       }
       return obj;
+
+      /*
+       http://stackoverflow.com/questions/263965/how-can-i-convert-a-string-to-boolean-in-javascript
+       var falsy = /^(?:f(?:alse)?|no?|0+)$/i;
+       Boolean.parse = function(val) {
+       return !falsy.test(val) && !!val;
+       };
+       */
     },
     _createUrlParamsObject: function () {
-      var urlObject,
-          url;
+
       // retrieve url parameters. Templates all use url parameters to determine which arcgis.com
       // resource to work with.
       // Map templates use the webmap param to define the webmap to display
@@ -196,11 +207,37 @@ define([
       // id to retrieve application specific configuration information. The configuration
       // information will contain the values the  user selected on the template configuration
       // panel.
-      url = document.location.href;
-      urlObject = urlUtils.urlToObject(url);
-      urlObject.query = urlObject.query || {};
-      // remove any HTML tags from query item
+
+      var url = document.location.href;
+      /*
+      var esriUrlObject = urlUtils.urlToObject(url);
+      console.info("Esri URL Object: ", esriUrlObject);
+      */
+      /*
+      var urlElement = document.createElement('a');
+      urlElement.href = url;
+      var elementUrlObject = {
+        protocol: urlElement.protocol,
+        hostname: urlElement.hostname,
+        pathname: urlElement.pathname.replace(/(^\/?)/, "/"),
+        search: urlElement.search.replace(/\?/, ""),
+        decodedSearch: decodeURIComponent(urlElement.search.replace(/\?/, "")),
+        query: ioQuery.queryToObject(decodeURIComponent(urlElement.search.replace(/\?/, ""))),
+        hash: urlElement.hash.replace(/#/, "")
+      };
+      console.info("Anchor Element Object: ", elementUrlObject);
+      */
+
+      var urlParts = url.split("?");
+      var urlObject = {
+        path: urlParts[0],
+        query: urlParts[1] ? urlParts[1].split("#")[0] : {}
+      };
+      urlObject.query = decodeURIComponent(urlObject.query);
+      urlObject.query = ioQuery.queryToObject(urlObject.query);
       urlObject.query = esriLang.stripTags(urlObject.query);
+      //console.info("Template URL Object: ", urlObject);
+
       return urlObject;
     },
     _initializeApplication: function () {
@@ -395,7 +432,7 @@ define([
           });
         }
       } else {
-        // we're done. we dont need to get the webmap
+        // we're done. we don't need to get the webmap
         deferred.resolve();
       }
       return deferred.promise;

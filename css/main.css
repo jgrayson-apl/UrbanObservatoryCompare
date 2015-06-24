@@ -48,14 +48,6 @@ html, body, #mainWindow {
   float : left;
 }
 
-/*#socialMediaPane #socialMediaLinks {
-  float : right;
-}
-
-.esriRTL #socialMediaPane #socialMediaLinks {
-  float : left;
-}*/
-
 #socialMediaLinks {
   margin  : 10px;
   opacity : 0.5;

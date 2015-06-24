@@ -18,7 +18,7 @@ define({
         "moreInfo": "More Information on the Urban Observatory",
         "buttonText": "Start Comparing"
       },
-      "socialMediaMessage": "Compare 16 global cities using maps as a common language. Experience #UrbanObservatory",
+      "socialMediaMessage": "Compare global cities using maps as a common language. Experience #UrbanObservatory",
       "viewMapOnline": "View this map in ArcGIS.com",
       "selectMapPanel": "SELECT MAP PANEL",
       "noDescription": "[ NO DESCRIPTION ]",
