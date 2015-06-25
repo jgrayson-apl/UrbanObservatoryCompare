@@ -37,7 +37,9 @@ define([
   "esri/dijit/Legend",
   "apl/UOGroupContent",
   "apl/UOBusyStatus"
-], function (declare, lang, connect, array, fx, ioQuery, easing, query, on, aspect, dom, domConstruct, domClass, domStyle, domGeom, Deferred, Manager, Source, Target, topic, registry, Dialog, TitlePane, ContentPane, Button, popup, Tooltip, TooltipDialog, esriConfig, domUtils, arcgisUtils, Map, IdentityManager, esriPopup, Scalebar, Legend, UOGroupContent, UOBusyStatus) {
+], function (declare, lang, connect, array, fx, ioQuery, easing, query, on, aspect, dom, domConstruct, domClass, domStyle, domGeom,
+             Deferred, Manager, Source, Target, topic, registry, Dialog, TitlePane, ContentPane, Button, popup, Tooltip, TooltipDialog,
+             esriConfig, domUtils, arcgisUtils, Map, IdentityManager, esriPopup, Scalebar, Legend, UOGroupContent, UOBusyStatus) {
 
   /**
    * URBAN OBSERVATORY COMPARE
@@ -1269,7 +1271,7 @@ define([
       fx.animateProperty({
         node: scrollNode,
         duration: 1000,
-        easing: this.uoEasing,
+        easing: easing.circInOut,
         properties: {
           scroll: scrollOptions.scroll
         },
