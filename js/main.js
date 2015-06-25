@@ -914,7 +914,7 @@ define([
                 var maxLevelNotOK = (mapMaxLevel < this.config.maxLevel);
                 if(minLevelNotOK || maxLevelNotOK) {
                   var mapTitle = createMapResponse.itemInfo.item.title;
-                  console.log(lang.replace("Possible Map level conflicts for '{0}': map[{1}-{2}] vs config[{3}-{4}]", [mapTitle, mapMinLevel, mapMaxLevel, this.config.minLevel, this.config.maxLevel]));
+                  console.warn(lang.replace("Possible Map level conflicts for '{0}': map[{1}-{2}] vs config[{3}-{4}]", [mapTitle, mapMinLevel, mapMaxLevel, this.config.minLevel, this.config.maxLevel]));
                 }
               }
 
