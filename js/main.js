@@ -96,6 +96,11 @@ define([
       // IS APPLICATION BEING DISPLAYED WITH A RIGHT-TO-LEFT LOCALE //
       this.isRTL = (this.config.i18n.direction === "rtl");
 
+      // MAKE SURE CITIES ARE PARSED AS ARRAY OF STRINGS //
+      if(!(this.config.cities instanceof Array)){
+        this.config.cities = this.config.cities.split(",")
+      }
+
       // MAKE SURE LEVELS ARE TREATED AS NUMBERS //
       this.config.minLevel = parseInt(config.minLevel, 10);
       this.config.level = parseInt(config.level, 10);
