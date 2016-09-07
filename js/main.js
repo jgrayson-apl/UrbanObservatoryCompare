@@ -97,7 +97,7 @@ define([
       this.isRTL = (this.config.i18n.direction === "rtl");
 
       // MAKE SURE CITIES ARE PARSED AS ARRAY OF STRINGS //
-      if(!(this.config.cities instanceof Array)){
+      if(!(this.config.cities instanceof Array)) {
         this.config.cities = this.config.cities.split(",")
       }
 
@@ -310,7 +310,7 @@ define([
       }, domConstruct.create('div', {}, buttonNode));
 
       var splashContentPane = new ContentPane({
-        'class': 'splashContent',
+        className: 'splashContent',
         content: splashNode
       });
 
@@ -417,19 +417,19 @@ define([
           // CREATE NOUN PANE //
           nounPane = new TitlePane({
             id: nounPaneId,
-            'class': 'themePane',
+            className: 'themePane',
             title: noun,
             open: true
           }, domConstruct.create('div', {}, themeListPane.containerNode));
         }
         // CREATE NOUN NODE //
-        nounNode = domConstruct.create('div', {id: nounNodeId}, nounPane.containerNode);
+        nounNode = domConstruct.create('div', { id: nounNodeId }, nounPane.containerNode);
       }
 
       // THEME NODE //
       var themeNode = domConstruct.create('div', {
         id: lang.replace("themeLabel_{0}_{1}", [noun, theme]),
-        'class': 'themeItem selectable actionItem',
+        className: 'themeItem selectable actionItem',
         innerHTML: theme,
         onclick: lang.partial(this.newThemeSelected, noun, theme, true)
       }, nounNode);
@@ -543,14 +543,14 @@ define([
         var avatarNode = domConstruct.create('center', {});
         domConstruct.create('div', {
           innerHTML: lang.replace("{0}: {1}", [cityInfo.name, this.currentSelection.theme]),
-          'class': 'avatarLabel'
+          className: 'avatarLabel'
         }, avatarNode);
         // THUMBNAIL //
         var thumbnailUrl = this.groupContent.getThumbnailUrl(cityInfo.name, this.currentSelection.noun, this.currentSelection.theme);
         if(thumbnailUrl) {
           domConstruct.create('img', {
             src: thumbnailUrl,
-            'class': 'avatarThumbnail'
+            className: 'avatarThumbnail'
           }, avatarNode);
         }
         return {
@@ -571,7 +571,7 @@ define([
          */
         var cityNode = domConstruct.create('td', {
           id: lang.replace('compareCity_{name}', cityInfo),
-          'class': lang.replace("cityNode dojoDndItem actionItem selectable cityFirstLetter-{0}", [firstLetter]),
+          className: lang.replace("cityNode dojoDndItem actionItem selectable cityFirstLetter-{0}", [firstLetter]),
           innerHTML: cityInfo.name
         });
         cityNode.cityInfo = cityInfo;
@@ -609,7 +609,7 @@ define([
         if(!listByFirstLetterNode) {
           domConstruct.create("div", {
             id: firstLetterNodeId,
-            'class': "firstLetter",
+            className: "firstLetter",
             innerHTML: firstLetter
           }, "listByFirstLetter", this.isRTL ? "first" : "last");
         }
@@ -668,7 +668,7 @@ define([
 
       } else {
         var mapPickerPane = domConstruct.create('table', {
-          'class': 'mapPicker'
+          className: 'mapPicker'
         });
 
         var labelRow = domConstruct.create('tr', {}, mapPickerPane);
@@ -681,7 +681,7 @@ define([
 
         var mapPanelsRow = domConstruct.create('tr', {}, mapPickerPane);
         domConstruct.create('td', {
-          'class': 'mapOption',
+          className: 'mapOption',
           innerHTML: "1",
           mouseenter: function () {
             domClass.add('map1', 'mapOptionHighlight');
@@ -695,7 +695,7 @@ define([
           }
         }, mapPanelsRow);
         domConstruct.create('td', {
-          'class': 'mapOption',
+          className: 'mapOption',
           innerHTML: "2",
           mouseenter: function () {
             domClass.add('map2', 'mapOptionHighlight');
@@ -711,7 +711,7 @@ define([
 
         if(!this.config.dualPane) {
           domConstruct.create('td', {
-            'class': 'mapOption',
+            className: 'mapOption',
             innerHTML: "3",
             mouseenter: function () {
               domClass.add('map3', 'mapOptionHighlight');
@@ -880,7 +880,7 @@ define([
             var mapContainer = registry.byId(mapNodeId).containerNode;
             // CREATE NODE TO HOLD MAP //
             var mapSubNode = domConstruct.create('div', {
-              'class': 'mapSubNode',
+              className: 'mapSubNode',
               style: "width:100%;height:100%;"
             }, mapContainer, 'only');
             // FADE OUT NEW MAP NODE BEFORE WE LOAD THE MAP INTO IT //
@@ -956,7 +956,7 @@ define([
               // MAP LEGEND //
               var legendParentNode = domConstruct.create('div', {
                 id: legendNodeId,
-                'class': 'legendNode',
+                className: 'legendNode',
                 click: lang.hitch(this, function () {
                   this.toggleLegend(legendParentNode);
                 })
@@ -1399,7 +1399,7 @@ define([
   });
 
   // VERSION //
-  UOCompareApp.version = "2.0.0";
+  UOCompareApp.version = "2.0.1";
 
   return UOCompareApp;
 });
