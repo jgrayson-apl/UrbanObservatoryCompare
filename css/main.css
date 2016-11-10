@@ -69,6 +69,7 @@ html, body, #mainWindow {
   margin-right  : 0;
   margin-left   : 5px;
   background    : #222 url(../images/hide_pane_up.png) no-repeat 0;
+  overflow      : hidden;
 }
 
 #topTitlePane.collapsed {
