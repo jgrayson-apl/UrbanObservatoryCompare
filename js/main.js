@@ -1399,7 +1399,7 @@ define([
   });
 
   // VERSION //
-  UOCompareApp.version = "2.0.1";
+  UOCompareApp.version = "2.0.2";
 
   return UOCompareApp;
 });
