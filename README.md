@@ -1,4 +1,4 @@
-# Urban Observatory Compare Tmplate Application
+# Urban Observatory Compare Template Application
 The Urban Observatory Compare application template allows organizations to host and configure the application with their own content.
 
 ### How to deploy to your ArcGIS Online Organization
