@@ -213,7 +213,7 @@ define([
           // SEARCH AGAIN IF WE HAVE MORE RESULTS THAN WERE RETURNED //
           var otherQueriesDeferreds = [];
           for (var nextIndex = response.nextQueryParams.start; nextIndex < response.total; nextIndex += queryParams.num) {
-            var otherQuery = this.portalGroup.queryItems(lang.mixin(queryParams, {start: nextIndex}));
+            var otherQuery = this.portalGroup.queryItems(lang.mixin(queryParams, { start: nextIndex }));
             otherQueriesDeferreds.push(otherQuery);
           }
           all(otherQueriesDeferreds).then(lang.hitch(this, function (otherQueryResults) {
@@ -255,7 +255,12 @@ define([
         webmap.nounName = tagParts[2];
         webmap.themeName = tagParts[3].replace(/_/g, ' ');
 
-        this._webmapStore.add(webmap);
+        var foundWebmap = this._webmapStore.get(webmap.id);
+        if(foundWebmap) {
+          console.info("FOUND DUPLICATES-- About to load:", foundWebmap, "Already loaded:", webmap);
+        } else {
+          this._webmapStore.add(webmap);
+        }
 
         this.addCity(webmap.cityName);
         this.addTheme(webmap.nounName, webmap.themeName);
@@ -351,7 +356,7 @@ define([
      * @returns {*|Array}
      */
     getCitiesForTheme: function (noun, theme) {
-      var cityItems = this._webmapStore.query({nounName: noun, themeName: theme});
+      var cityItems = this._webmapStore.query({ nounName: noun, themeName: theme });
       return array.map(cityItems, function (cityItem) {
         return cityItem.cityName;
       });
@@ -458,7 +463,7 @@ define([
      */
     findWebmap: function (searchTag) {
       //console.log("findWebMap: ",searchTag);
-      var webmaps = this._webmapStore.query({uoTag: searchTag});
+      var webmaps = this._webmapStore.query({ uoTag: searchTag });
       if(webmaps.length > 0) {
         return webmaps[0];
       } else {
